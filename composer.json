@@ -1,0 +1,22 @@
+{
+    "name": "kiplin/test-backend",
+    "description": "The Kiplin Backend Technical Test (or KBTT)",
+    "type": "project",
+    "license": "Private",
+    "authors": [
+        {
+            "name": "Gildas Quéméner",
+            "email": "gildas.quemener@kiplin.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": { "App\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "App\\Tests\\": "tests/" }
+    },
+    "require": {
+        "symfony/uid": "^5.2"
+    }
+}
