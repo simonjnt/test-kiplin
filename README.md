@@ -1,4 +1,4 @@
-# The Kiplin Backend Technical Test (or KBTT)
+# Kiplin Backend Technical Test
 
 Welcome to this test!
 
@@ -10,11 +10,11 @@ If this is the first time you hear about this architecural pattern, it aims to s
 The rules of this pattern are:
   - Code living in the `Domain` namespace MUST NOT depend on external system (filesystem, clock, network, ...)
   - Code living in the `Domain` namespace MUST NOT be context specific (can only run in a web or a cli context, for instance)
-  - Code that requires the previous dependences MUST live in the `Infrastructure` namespace
+  - Code that requires the previous dependencies MUST live in the `Infrastructure` namespace
   - `Domain` classes MUST NOT depend on `Infrastructure` classes
   - `Infrastructure` classes CAN depend on `Domain` classes
 
-Furthermore, we have choosen to split read and write concerns (aka the CQRS pattern) by defining multiple repository interfaces. Check the `App\Domain\TodoRepository` and `App\Application\TodosRepository` to learn more about their contract.
+Furthermore, we have chosen to split read and write concerns (aka the CQRS pattern) by defining multiple repository interfaces. Check the `App\Domain\TodoRepository` and `App\Application\TodosRepository` to learn more about their contract.
 
 ## Running the app
 For now, the app has no contact with the outside world (no shiny UI, no fancy responsive design, ...).
@@ -38,7 +38,7 @@ The testsuite must pass by simply running `make all`.
 
 You will add a README explaining your storage choice, along with any modifications or suggestions you have or would have done to the codebase.
 
-This whole test should not last more than one hour. We recommend to document any extra work you would have performed.
+This whole test should not last more than one hour. We recommend documenting any extra work you would have performed.
 
 At the end of the exercise, archive your project, including the `.git` directory and excluding the `vendor` directory.
 
