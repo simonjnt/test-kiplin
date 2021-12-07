@@ -14,7 +14,8 @@
         "psr-4": { "App\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": { "App\\Tests\\": "tests/" }
+        "psr-4": { "App\\Tests\\": "tests/" },
+        "files": ["tests/Fixtures/builders.php"]
     },
     "require": {
         "symfony/uid": "^5.2"

@@ -10,34 +10,34 @@ use App\Domain\TodoId;
 use App\Domain\TodoRepository;
 use App\Infrastructure\Repository\InMemoryTodoRepository;
 use PHPUnit\Framework\TestCase;
+use function App\Tests\Fixtures\aTodo;
 
 final class TodoRepositoryTest extends TestCase
 {
     /**
+     * @test
      * @dataProvider provideConcretions
      */
-    public function testTodoPersistence(TodoRepository $repository): void
+    public function it_saves_non_existing_todo(TodoRepository $repository): void
     {
-        $id = TodoId::generate();
+        $aNonExistingTodo = aTodo()->build();
 
-        $todo = Todo::open($id, TodoDescription::fromString('Buy milk'));
-        $repository->save($todo);
+        $repository->save($aNonExistingTodo);
 
-        $this->assertNull($repository->get(TodoId::generate()));
+        $this->assertEquals($aNonExistingTodo, $repository->get($aNonExistingTodo->id()));
+    }
 
-        $todo = $repository->get($id);
-        $this->assertInstanceOf(Todo::class, $todo);
-        $todo->close();
-        $repository->save($todo);
+    /**
+     * @test
+     * @dataProvider provideConcretions
+     */
+    public function it_saves_existing_todo(TodoRepository $repository): void
+    {
+        $anExistingTodo = aTodo()->savedIn($repository);
 
-        try {
-            $todo = $repository->get($id);
-            $todo->close();
-        } catch (CannotCloseTodo) {
-            return;
-        }
+        $repository->save($anExistingTodo);
 
-        throw new \RuntimeException('Expecting to not be able to close already closed todo.');
+        $this->assertEquals($anExistingTodo, $repository->get($anExistingTodo->id()));
     }
 
     public function provideConcretions(): \Generator
