@@ -38,7 +38,7 @@ The testsuite must pass by simply running `make all`.
 
 You will add a README explaining your storage choice, along with any modifications or suggestions you have or would have done to the codebase.
 
-This whole test should not last more than one hour. We recommend documenting any extra work you would have performed.
+We recommend documenting any extra work you would have performed.
 
 At the end of the exercise, archive your project, including the `.git` directory and excluding the `vendor` directory.
 
