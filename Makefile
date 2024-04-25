@@ -9,10 +9,10 @@ export GID
 
 .PHONY: test
 test: phpunit.xml composer.lock
-	docker-compose run --rm php phpunit --colors --testdox
+	docker compose run --rm php phpunit --colors --testdox
 
 composer.lock:
-	docker-compose run --rm php composer install
+	docker compose run --rm php composer install
 
 phpunit.xml:
 	cp phpunit.xml.dist phpunit.xml
@@ -21,7 +21,7 @@ phpunit.xml:
 clean:
 	-rm phpunit.xml
 	-rm composer.lock
-	docker-compose down
+	docker compose down
 
 .PHONY: all
 all: test clean

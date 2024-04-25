@@ -17,7 +17,7 @@ final class TodosRepositoryTest extends TestCase
      * @test
      * @dataProvider provideConcretions
      */
-    public function itFindsExistingTodo(TodoRepository $repository): void
+    public function it_finds_existing_todo(TodoRepository $repository): void
     {
         $aTodo = aTodo()->savedIn($repository);
 
@@ -69,6 +69,7 @@ final class TodosRepositoryTest extends TestCase
     public function provideConcretions(): \Generator
     {
         yield InMemoryTodoRepository::class => [new InMemoryTodoRepository()];
+        // TODO: add other persistence type repositories here!
     }
 
     private function assertThatArrayContainsTodo(array $actualTodos, Todo $expectedTodo): void
