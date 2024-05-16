@@ -10,3 +10,17 @@ services:
         volumes:
             - '.:/app'
         user: '${UID:-1000}:${GID:-1000}'
+    database:
+        image: postgres:15.3-alpine
+        environment:
+            POSTGRES_PASSWORD: root
+            POSTGRES_USER: root
+            POSTGRES_DB: test_backend
+        ports:
+            - "5434:5432"
+        volumes:
+            - database_data:/var/lib/postgresql/data:rw
+            - ./docker/database/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+    database_data:

@@ -5,7 +5,7 @@ Welcome to this test!
 ## Context
 This is a todo-list application, which is using the hexagonal architecture.
 
-If this is the first time you hear about this architecural pattern, it aims to separate domain concepts (related to the business) from infrastructure concerns (related to technical details).
+If this is the first time you hear about this architectural pattern, it aims to separate domain concepts (related to the business) from infrastructure concerns (related to technical details).
 
 The rules of this pattern are:
   - Code living in the `Domain` namespace MUST NOT depend on external system (filesystem, clock, network, ...)
