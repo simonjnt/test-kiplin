@@ -8,6 +8,7 @@ use App\Domain\Todo;
 use App\Domain\TodoDescription;
 use App\Domain\TodoId;
 use App\Domain\TodoRepository;
+use App\Infrastructure\Repository\DatabaseTodoRepository;
 use App\Infrastructure\Repository\InMemoryTodoRepository;
 use PHPUnit\Framework\TestCase;
 use function App\Tests\Fixtures\aTodo;
@@ -43,5 +44,6 @@ final class TodoRepositoryTest extends TestCase
     public function provideConcretions(): \Generator
     {
         yield InMemoryTodoRepository::class => [new InMemoryTodoRepository()];
+        yield DatabaseTodoRepository::class => [new DatabaseTodoRepository()];
     }
 }

@@ -7,6 +7,7 @@ use App\Application\ReadModel\OpenedTodo;
 use App\Domain\Todo;
 use App\Domain\TodoId;
 use App\Domain\TodoRepository;
+use App\Infrastructure\Repository\DatabaseTodoRepository;
 use App\Infrastructure\Repository\InMemoryTodoRepository;
 use PHPUnit\Framework\TestCase;
 use function App\Tests\Fixtures\aTodo;
@@ -69,7 +70,7 @@ final class TodosRepositoryTest extends TestCase
     public function provideConcretions(): \Generator
     {
         yield InMemoryTodoRepository::class => [new InMemoryTodoRepository()];
-        // TODO: add other persistence type repositories here!
+        yield DatabaseTodoRepository::class => [new DatabaseTodoRepository()];
     }
 
     private function assertThatArrayContainsTodo(array $actualTodos, Todo $expectedTodo): void
